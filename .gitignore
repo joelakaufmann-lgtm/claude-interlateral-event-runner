@@ -1,0 +1,21 @@
+# --- Runtime artifacts: never commit a live mandate or any token ---
+# templates/mandate.example.yaml is tracked; a real, populated mandate is not.
+mandate.yaml
+.env
+*.env
+*.token
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
