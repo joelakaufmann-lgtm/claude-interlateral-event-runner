@@ -1,0 +1,41 @@
+# mandate.yaml — pre-staged mandate set (the "warrant")
+#
+# Opus writes this the INSTANT Joel approves, so execution never waits on a conversation.
+# The lean executor (cast_votes.py / watch_round.py) reads ONLY this file to act.
+# It decides nothing — every value here is Joel-approved.
+#
+# Copy to mandate.yaml in the active event working directory and fill in.
+
+event_slug: agentweek2026-day04
+
+# --- Votes (cap 3). The instant Joel says "vote 4, 3, 9", record it here. -----
+votes: [4, 3, 9]
+vote_intent: "Cast Joel's pre-approved vote for this entry."
+
+# Optional human-readable note for the audit trail / debrief. Not sent to the API.
+votes_rationale: >
+  4 = What You Cannot Delegate; 3 = If an Agent Can't Hold Authority;
+  9 = After the Grant. Approved by Joel on <date> before the window opened.
+
+# --- Proposal status (set once submitted; up-gated to Joel) -------------------
+proposal:
+  status: approved        # draft | approved | submitted
+  title: "Agent or Guardian?"
+  intent: "Submit Joel's proposal to the round."
+
+# --- Pre-drafted Jot edits (optional). Exact oldText/newText for replay-safe ---
+#     find/replace. Re-read before applying; vary the closing signature.
+jot_edits:
+  - topic_id: ""          # winning topic id, filled after results
+    intent: "Post Joel's pre-approved contribution."
+    old_text: ""          # a UNIQUE anchor present in the current body
+    new_text: ""          # must NOT contain old_text
+    # tip: end each appended block with a moving sentinel, e.g. "— JK [seq:01]"
+
+# --- Governance metadata (mirrors references/governance.md) -------------------
+warrant:
+  executor_model: sonnet
+  watcher_model: haiku
+  may: [poll_state, check_status, register, validate_payload, cast_approved_votes, post_approved_edits]
+  may_not: [author_proposals, decide_votes, edit_substance, invent_intent]
+  up_gate: [submit_proposal, cast_votes, post_under_joels_name]
