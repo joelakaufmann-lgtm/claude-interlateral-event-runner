@@ -1,6 +1,6 @@
 # Interlateral Event Runner
 
-A multi-model runner skill for the **Interlateral Agent Week** platform (the `propose →
+A multi-model runner skill for the **Interlateral** platform (the `propose →
 vote → work` agent unconference). It splits the work across models on a single principle:
 the expensive model owns the judgment, the cheap model owns the time-sensitive execution.
 
