@@ -1,11 +1,11 @@
 ---
 name: interlateral-event-runner
-description: Drive the Interlateral Agent Week platform (propose, vote, work phases) with a disciplined multi-model split. An Opus 4.8 orchestrator owns all judgment (proposal development, Jot contributions, deciding which entries to vote and what to post, red-team critique); a Sonnet sub-agent owns deterministic execution (casting pre-approved votes, polling round state, status/registration checks, payload validation); a Haiku watcher owns pure phase-flip notification. Bakes in the event's own warrant/warden governance and engineers out the two Day-04 misses (uncast votes, token-hygiene lapse). MANDATORY TRIGGERS — Interlateral, Agent Week, agentweek2026, unconference, "register the agent", "submit a proposal", "cast my votes", "the voting window", "edit the Jot", "phase flip", "round state", "participant token", "mandate set", "warrant/warden", "the event runner". Use whenever Joel is participating in an Interlateral Agent Week event or any propose/vote/work agent unconference on this platform.
+description: Drive the Interlateral platform (propose, vote, work phases) with a disciplined multi-model split. An Opus 4.8 orchestrator owns all judgment (proposal development, Jot contributions, deciding which entries to vote and what to post, red-team critique); a Sonnet sub-agent owns deterministic execution (casting pre-approved votes, polling round state, status/registration checks, payload validation); a Haiku watcher owns pure phase-flip notification. Bakes in the event's own warrant/warden governance and engineers out the two Day-04 misses (uncast votes, token-hygiene lapse). MANDATORY TRIGGERS — Interlateral, Agent Week, agentweek2026, unconference, "register the agent", "submit a proposal", "cast my votes", "the voting window", "edit the Jot", "phase flip", "round state", "participant token", "mandate set", "warrant/warden", "the event runner". Use whenever Joel is participating in an Interlateral Agent Week event or any propose/vote/work agent unconference on this platform.
 ---
 
 # Interlateral Event Runner
 
-A multi-model runner for the Interlateral Agent Week platform. Built from the Day-04
+A multi-model runner for the Interlateral platform. Built from the Day-04
 debrief: the reasoning was strong, the **operational discipline under time pressure**
 was not. Two misses cost a winning slot and broke secret hygiene — approved votes were
 never cast before the round closed, and the participant token rode in a logged command.
@@ -74,8 +74,8 @@ are capped at 10,240 bytes *including the JSON envelope*. Draft long, but keep a
 `scripts/validate_payload.py` before any POST. Submitting is outcome-determinative — up-gate
 to Joel for fresh confirmation, then submit.
 
-### STAGE MANDATE  (Opus — judgment, with Joel's sign-off)
-The instant Joel approves votes, capture them as a structured object so execution never
+### STAGE MANDATE  (Opus — judgment, with User's sign-off)
+The instant User approves votes, capture them as a structured object so execution never
 waits on a conversation. Write `mandate.yaml` from `templates/mandate.example.yaml`:
 the approved `votes: [id, id, id]` (cap 3), proposal status, and any pre-drafted Jot edits
 with their exact `oldText`/`newText`. This is the hand-off contract the executor reads.
@@ -114,13 +114,13 @@ Close with an honest ledger — what went well, what slipped — and convert any
 a system (a pre-staged step, a script helper, a watcher). That discipline is the whole
 point of this skill.
 
-## Up-gate: what always returns to Joel
+## Up-gate: what always returns to User
 
 Outcome-determinative or binding acts get fresh confirmation before execution, even with a
 live mandate: submitting a proposal, casting votes, and posting anything under Joel's name.
 A standing mandate lets the executor *act*; it does not let any model *bind* Joel to
 something he did not approve. The API's `mandate_label` ("explicit") + `intent` fields are
-the audit trail — record Joel's actual approved intent, never invent authority.
+the audit trail — record User's actual approved intent, never invent authority.
 
 ## Reference files
 - `references/api-map.md` — endpoint map, auth model, error codes, Jot edit semantics. Read at session start.
